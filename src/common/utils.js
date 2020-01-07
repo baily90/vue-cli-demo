@@ -12,7 +12,7 @@ export default {
    * @param {string} title
    */
   setTitle (title) {
-    document.title = title || 'vue-cli-demo'
+    document.title = title || '百里小站'
   },
   /**
    * 保存用户信息
