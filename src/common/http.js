@@ -1,18 +1,23 @@
+/* eslint-disable no-undef */
 import router from '@/router'
 import axios from 'axios'
 import QS from 'qs' // 用来序列化post类型的数据
-import { Toast } from 'vant'
 
 // 导入vuex,要使用到里面的网络状态/token
 import commonStore from '@/store/modules/common'
 
-axios.defaults.timeout = 10000
+// 请求超时机制（5000ms）
+axios.defaults.timeout = 5000
 
+// 默认请求头
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 
+let loading = null
 // 请求拦截器
 axios.interceptors.request.use(
   config => {
+    loading = Vue.prototype.$loading
+    loading.show()
     // 每次发送请求之前判断vuex中是否存在token
     // 如果存在，则统一在http请求的header都加上token，这样后台根据token判断你的登录情况
     // 即使本地存在token，也有可能token是过期的，所以在响应拦截器中要对返回状态进行判断
@@ -27,6 +32,10 @@ axios.interceptors.request.use(
 // 响应拦截器
 axios.interceptors.response.use(
   response => {
+    if (loading) {
+      loading.hide()
+      loading = null
+    }
     // 如果返回的状态码为200，说明接口请求成功，可以正常拿到数据
     // 否则的话抛出错误
     if (response.status === 200) {
@@ -41,6 +50,10 @@ axios.interceptors.response.use(
   // 然后根据返回的状态码进行一些操作，例如登录过期提示，错误提示等等
   // 下面列举几个常见的操作，其他需求可自行扩展
   error => {
+    if (loading) {
+      loading.hide()
+      loading = null
+    }
     const { response } = error
     if (response) {
       // 请求已发出，但是不在2xx的范围 errorHandle为解析错误码

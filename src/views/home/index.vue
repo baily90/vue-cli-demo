@@ -1,27 +1,52 @@
 <template>
   <div class="home">
-    home
+    <van-swipe :autoplay="5000" :height="200">
+      <van-swipe-item v-for="(image, index) in images" :key="index">
+        <img :src="image" />
+      </van-swipe-item>
+    </van-swipe>
+    <van-divider dashed>功能区</van-divider>
+    <van-grid :column-num="3">
+      <van-grid-item icon="idcard" text="身份证号码查询" @click="go2IdCard"/>
+      <van-grid-item icon="idcard" text="手机号码归属地" @click="go2Phone"/>
+      <van-grid-item icon="idcard" text="火车查询" @click="$toast('暂未开放')"/>
+      <van-grid-item icon="idcard" text="快递查询" @click="$toast('暂未开放')"/>
+      <van-grid-item icon="idcard" text="彩票开奖" @click="$toast('暂未开放')"/>
+      <van-grid-item icon="idcard" text="银行卡归属地查询" @click="$toast('暂未开放')"/>
+    </van-grid>
   </div>
 </template>
 
 <script>
-import { getHomeInfo } from '@/service/home'
+// import { getHomeInfo } from '@/service/home'
 export default {
   name: 'home',
+  data () {
+    return {
+      images: [
+        'https://img.yzcdn.cn/vant/apple-1.jpg',
+        'https://img.yzcdn.cn/vant/apple-2.jpg'
+      ]
+    }
+  },
   created () {
-    // this.init()
+    this.init()
   },
   methods: {
     init () {
-      this.getHomeInfo()
+      // this.getHomeInfo()
     },
     async getHomeInfo () {
       try {
-        const { data } = await getHomeInfo()
-        console.log(data)
-      } catch (error) {
-
-      }
+        // const { data } = await getHomeInfo()
+        // console.log(data)
+      } catch (error) {}
+    },
+    go2IdCard () {
+      this.$router.push({ path: '/idCard' })
+    },
+    go2Phone () {
+      this.$router.push({ path: '/phone' })
     }
   }
 }

@@ -1,16 +1,21 @@
 <template>
   <div id="app">
+    <comp-header></comp-header>
     <transition :name="transitionName">
       <router-view class="routerClass"/>
     </transition>
   </div>
 </template>
 <script>
+import compHeader from '@/components/CompHeader'
 export default {
   data () {
     return {
       transitionName: ''
     }
+  },
+  components: {
+    compHeader
   },
   watch: {
     $route (to, from) {
