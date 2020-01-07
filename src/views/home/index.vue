@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <van-swipe :autoplay="5000" :height="200">
-      <van-swipe-item v-for="(image, index) in images" :key="index">
-        <img :src="image" />
+      <van-swipe-item>
+        <img :src="bannerImg" />
       </van-swipe-item>
     </van-swipe>
     <van-divider dashed>功能区</van-divider>
@@ -23,10 +23,7 @@ export default {
   name: 'home',
   data () {
     return {
-      images: [
-        'https://img.yzcdn.cn/vant/apple-1.jpg',
-        'https://img.yzcdn.cn/vant/apple-2.jpg'
-      ]
+      bannerImg: require('@/assets/imgs/newYear.jpg')
     }
   },
   created () {
