@@ -1,6 +1,15 @@
 module.exports = {
   devServer: {
-    port: '8888'
+    port: '8888',
+    proxy: {
+      '^/api': {
+        target: 'http://49.235.174.250/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '/api'
+        }
+      }
+    }
   },
   chainWebpack: config => {
     // 移除 prefetch 插件

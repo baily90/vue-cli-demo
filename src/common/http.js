@@ -39,7 +39,7 @@ axios.interceptors.response.use(
     // 如果返回的状态码为200，说明接口请求成功，可以正常拿到数据
     // 否则的话抛出错误
     if (response.status === 200) {
-      commonStore.commit('changeNetworkSuccess', true)
+      // commonStore.commit('changeNetworkSuccess', true)
       return Promise.resolve(response)
     } else {
       return Promise.reject(response)
@@ -64,12 +64,12 @@ axios.interceptors.response.use(
       // eg:请求超时或断网时，更新state的network状态
       // network状态在app.vue中控制着一个全局的断网提示组件的显示隐藏
       // 关于断网组件中的刷新重新获取数据，会在断网组件中说明
-      Toast({
-        message: '网络异常',
-        duration: 1500,
-        forbidClick: true
-      })
-      commonStore.commit('changeNetworkSuccess', false)
+      // this.$toast({
+      //   message: '网络异常',
+      //   duration: 1500,
+      //   forbidClick: true
+      // })
+      // commonStore.commit('changeNetworkSuccess', false)
       router.push({ path: '/networkError' })
     }
   }
@@ -98,11 +98,11 @@ const errorHandle = (status, other) => {
     // 清除本地token和清空vuex中token对象
     // 跳转登录页面
     case 403:
-      Toast({
-        message: '登录过期，请重新登录',
-        duration: 1000,
-        forbidClick: true
-      })
+      // this.$toast({
+      //   message: '登录过期，请重新登录',
+      //   duration: 1000,
+      //   forbidClick: true
+      // })
       // 清除token
       localStorage.removeItem('token')
       // 跳转登录页面，并将要浏览的页面fullPath传过去，登录成功后跳转需要访问的页面
@@ -117,19 +117,19 @@ const errorHandle = (status, other) => {
       break
     // 404请求不存在
     case 404:
-      Toast({
-        message: '网络请求不存在',
-        duration: 1500,
-        forbidClick: true
-      })
+      // this.$toast({
+      //   message: '网络请求不存在',
+      //   duration: 1500,
+      //   forbidClick: true
+      // })
       break
     // 其他错误，直接抛出错误提示
     default:
-      Toast({
-        message: other,
-        duration: 1500,
-        forbidClick: true
-      })
+      // this.$toast({
+      //   message: other,
+      //   duration: 1500,
+      //   forbidClick: true
+      // })
   }
 }
 
@@ -145,7 +145,8 @@ function get (url, params) {
     }).then(res => {
       resolve(res.data)
     }).catch(err => {
-      reject(err.data)
+      console.log(err)
+      reject(err)
     })
   })
 }
@@ -162,7 +163,7 @@ function post (url, params) {
         resolve(res.data)
       })
       .catch(err => {
-        reject(err.data)
+        reject(err)
       })
   })
 }

@@ -42,9 +42,8 @@ export default {
         //     'cardtype': 'GSM'
         //   }
         // }
-        const data = await getPhoneInfoService({ appkey: 'f7faa6f161909c09', shouji: this.phoneNum })
-        console.log(data)
-        this.res = data
+        const { result } = await getPhoneInfoService({ appkey: 'f7faa6f161909c09', shouji: this.phoneNum })
+        this.res = result
       } catch (error) {}
     }
   }

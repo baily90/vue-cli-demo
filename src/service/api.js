@@ -1,4 +1,4 @@
-const HOST = process.env === 'development' ? 'http://10.12.211.45:9999/api' : 'http://10.12.211.45:9999/api'
+const HOST = process.env.NODE_ENV === 'development' ? '/api' : 'http://172.17.0.14/api'
 export default {
   home: {
     getHomeInfo: `${HOST}/getHomeInfo`

@@ -44,8 +44,8 @@ export default {
         //     'birth': '1980年01月02日'
         //   }
         // }
-        const data = await getIdCardInfoService({ appkey: 'f7faa6f161909c09', idcard: this.idCard })
-        this.res = data && JSON.stringify(data)
+        const { result } = await getIdCardInfoService({ appkey: 'f7faa6f161909c09', idcard: this.idCard })
+        this.res = result
       } catch (error) {}
     }
   }
