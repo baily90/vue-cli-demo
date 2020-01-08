@@ -23,7 +23,9 @@ export default {
   },
   created () {
     const ua = window.navigator.userAgent.toLowerCase()
-    if (ua.match(/MicroMessenger/i) !== 'micromessenger') {
+    if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+      this.isWX = true
+    } else {
       this.isWX = false
     }
   }
