@@ -2,7 +2,7 @@
   <div class="idCard">
     <comp-header :isShowBack="true"/>
     <van-cell-group>
-      <van-field v-model="idCard" center clearable type="number" :autofocus="true" :maxlength="18" placeholder="请输入身份证号">
+      <van-field v-model="idCard" center clearable type="number" :maxlength="18" placeholder="请输入身份证号">
         <van-button slot="button" size="small" type="primary" @click="getIdCardInfo">查询</van-button>
       </van-field>
     </van-cell-group>

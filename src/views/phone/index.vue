@@ -7,7 +7,6 @@
         center
         clearable
         type="number"
-        :autofocus="true"
         :maxlength="11"
         placeholder="请输入手机号"
       >
