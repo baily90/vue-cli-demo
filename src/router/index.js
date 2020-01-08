@@ -14,6 +14,7 @@ routerContext.keys().forEach(router => {
 })
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 })
 
