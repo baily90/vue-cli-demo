@@ -34,6 +34,7 @@ header {
   position: relative;
   width: 100%;
   height: 44px;
+  background-color: #ffffff;
   .area {
     position: absolute;
     height: 44px;
