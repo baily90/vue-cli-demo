@@ -3,10 +3,10 @@ module.exports = {
     port: '8888',
     proxy: {
       '^/api': {
-        target: 'http://49.235.174.250/',
+        target: 'http://www.baili.fun/api/',
         changeOrigin: true,
         pathRewrite: {
-          '^/api': '/api'
+          '^/api': '/'
         }
       }
     }
