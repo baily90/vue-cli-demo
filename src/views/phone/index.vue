@@ -1,13 +1,25 @@
 <template>
   <div class="phone">
-    <comp-header :isShowBack="true"/>
+    <comp-header :isShowBack="true" />
     <van-cell-group>
-      <van-field v-model="phoneNum" center clearable type="number" :autofocus="true" :maxlength="11" placeholder="请输入手机号">
+      <van-field
+        v-model="phoneNum"
+        center
+        clearable
+        type="number"
+        :autofocus="true"
+        :maxlength="11"
+        placeholder="请输入手机号"
+      >
         <van-button slot="button" size="small" type="primary" @click="getPhoneInfo">查询</van-button>
       </van-field>
     </van-cell-group>
-    <van-divider dashed>查询结果</van-divider>
-    {{res}}
+    <van-divider v-if="res" dashed>查询结果</van-divider>
+    <van-cell-group v-if="res">
+      <van-cell title="手机号" :value="res.shouji" />
+      <van-cell title="运营商" :value="res.company" />
+      <van-cell title="其他信息" :value="`${res.province}${res.city}(${res.areacode})`" />
+    </van-cell-group>
   </div>
 </template>
 
@@ -33,17 +45,16 @@ export default {
           this.$toast('非法的手机号')
           return
         }
-        // {
-        //   'status': '0',
-        //   'msg': 'ok',
-        //   'result': {
-        //     'province': '浙江',
-        //     'city': '杭州',
-        //     'company': '中国移动',
-        //     'cardtype': 'GSM'
-        //   }
-        // }
-        const { result } = await getPhoneInfoService({ appkey: 'f7faa6f161909c09', shouji: this.phoneNum })
+        // shouji: "18601733660"
+        // province: ""
+        // city: "上海"
+        // company: "中国联通"
+        // cardtype: null
+        // areacode: "021"
+        const { result } = await getPhoneInfoService({
+          appkey: 'f7faa6f161909c09',
+          shouji: this.phoneNum
+        })
         this.res = result
       } catch (error) {}
     }

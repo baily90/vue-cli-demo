@@ -12,7 +12,7 @@
       <van-grid-item icon="phone-o" text="手机号码归属地" @click="go2Phone"/>
       <van-grid-item icon="logistics" text="火车查询" @click="$toast('暂未开放')"/>
       <van-grid-item icon="cluster-o  " text="快递查询" @click="$toast('暂未开放')"/>
-      <van-grid-item icon="chart-trending-o" text="彩票开奖" @click="$toast('暂未开放')"/>
+      <van-grid-item icon="chart-trending-o" text="彩票开奖查询" @click="$toast('暂未开放')"/>
       <van-grid-item icon="debit-pay" text="银行卡归属地查询" @click="$toast('暂未开放')"/>
     </van-grid>
   </div>

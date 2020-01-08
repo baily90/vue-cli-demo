@@ -6,8 +6,13 @@
         <van-button slot="button" size="small" type="primary" @click="getIdCardInfo">查询</van-button>
       </van-field>
     </van-cell-group>
-    <van-divider dashed>查询结果</van-divider>
-    {{res}}
+    <van-divider v-if="res" dashed>查询结果</van-divider>
+    <van-cell-group v-if="res">
+      <van-cell title="身份证号" :value="idCard" />
+      <van-cell title="性别" :value="res.sex" />
+      <van-cell title="出生日期" :value="res.birth" />
+      <van-cell title="其他信息" :value="`${res.city}${res.town}${res.area}`" />
+    </van-cell-group>
   </div>
 </template>
 
@@ -33,18 +38,11 @@ export default {
           this.$toast('非法的身份证号')
           return
         }
-        // {
-        //   'status': '0',
-        //   'msg': 'ok',
-        //   'result': {
-        //     'province': '河南省',
-        //     'city': '周口市',
-        //     'town': '鹿邑县',
-        //     'lastflag': '0',
-        //     'sex': '男',
-        //     'birth': '1980年01月02日'
-        //   }
-        // }
+        // sex: "男"
+        // birth: "1990年12月20日"
+        // city: ""
+        // town: ""
+        // area: ""
         const { result } = await getIdCardInfoService({ appkey: 'f7faa6f161909c09', idcard: this.idCard })
         this.res = result
       } catch (error) {}
