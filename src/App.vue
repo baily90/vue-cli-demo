@@ -1,25 +1,24 @@
 <template>
   <div id="app">
-    <comp-header></comp-header>
     <transition :name="transitionName">
       <router-view class="routerClass"/>
     </transition>
   </div>
 </template>
 <script>
-import compHeader from '@/components/CompHeader'
 export default {
   data () {
     return {
       transitionName: ''
     }
   },
-  components: {
-    compHeader
-  },
   watch: {
     $route (to, from) {
-      // 如果to索引大于from索引,判断为前进状态,反之则为后退状态
+      // 如果to索引大于from索引,判断为前进状态,反之则为后退状态,如果直接刷新不做动画
+      if (from.meta.index == undefined) {
+        this.transitionName = ''
+        return
+      }
       if (to.meta.index > from.meta.index) {
         this.transitionName = 'slide-left'
       } else {

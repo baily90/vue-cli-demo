@@ -1,5 +1,6 @@
 <template>
   <div class="login">
+    <comp-header :isShowBack="true"/>
     <van-cell-group>
         <van-field
           v-model="username"

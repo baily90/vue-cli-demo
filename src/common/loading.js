@@ -1,4 +1,4 @@
-import Loading from '@/components/Loading.vue'
+import Loading from '@/components/CompLoading.vue'
 
 export default {
   install (Vue) {

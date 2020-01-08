@@ -11,12 +11,16 @@ import FastClick from 'fastclick'
 
 import loading from './common/loading'
 
+import comHeader from './components/CompHeader.vue'
+
 // 全局样式初始化
 import './assets/style/reset.css'
 // 全局样式初始化
 import './assets/style/border.css'
 // 全局样式初始化
 import './assets/style/public.less'
+
+Vue.component(comHeader.name, comHeader)
 
 // 阻止启动生产消息
 Vue.config.productionTip = false

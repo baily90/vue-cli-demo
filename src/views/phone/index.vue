@@ -1,5 +1,6 @@
 <template>
   <div class="phone">
+    <comp-header :isShowBack="true"/>
     <van-cell-group>
       <van-field v-model="phoneNum" center clearable type="number" :autofocus="true" :maxlength="11" placeholder="请输入手机号">
         <van-button slot="button" size="small" type="primary" @click="getPhoneInfo">查询</van-button>
