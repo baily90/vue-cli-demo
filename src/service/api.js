@@ -8,5 +8,8 @@ export default {
   },
   phone: {
     getPhoneInfo: `${HOST}/shouji/query`
+  },
+  lottery: {
+    getLotteryInfo: `${HOST}/caipiao/query`
   }
 }
