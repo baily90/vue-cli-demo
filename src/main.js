@@ -28,7 +28,7 @@ Vue.config.productionTip = false
 FastClick.attach(document.body)
 
 Vue.use(loading)
-console.log('当前环境：' + process.env)
+
 new Vue({
   router,
   store,
