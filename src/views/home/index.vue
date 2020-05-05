@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     init () {
-      console.log('当前环境：' + process.env)
+      console.log('当前环境：' + JSON.stringify(process.env))
       // this.getHomeInfo()
     },
     async getHomeInfo () {
